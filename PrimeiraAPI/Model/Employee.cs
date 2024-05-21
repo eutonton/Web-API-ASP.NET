@@ -23,5 +23,8 @@ namespace PrimeiraAPI.Model
             this.photo = photo;
         }
 
+        public Employee()
+        {
+        }
     }
 }
