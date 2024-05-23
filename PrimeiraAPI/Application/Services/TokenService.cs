@@ -1,10 +1,10 @@
 ﻿using Microsoft.IdentityModel.Tokens;
-using PrimeiraAPI.Model;
+using PrimeiraAPI.Domain.Model;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace PrimeiraAPI.Services
+namespace PrimeiraAPI.Application.Services
 {
     public class TokenService
     {
@@ -13,7 +13,7 @@ namespace PrimeiraAPI.Services
             var key = Encoding.ASCII.GetBytes(Key.Secret);
             var tokenConfig = new SecurityTokenDescriptor
             {
-                Subject = new System.Security.Claims.ClaimsIdentity(new Claim[]
+                Subject = new ClaimsIdentity(new Claim[]
                 {
                     new Claim("employeeId", employee.id.ToString()),
                 }

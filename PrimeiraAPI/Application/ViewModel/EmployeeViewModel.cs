@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace PrimeiraAPI.ViewModel
+namespace PrimeiraAPI.Application.ViewModel
 {
     public class EmployeeViewModel
     {

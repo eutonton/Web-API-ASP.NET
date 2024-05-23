@@ -1,13 +1,13 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using PrimeiraAPI.Infraestrutura;
-using PrimeiraAPI.Model;
+using PrimeiraAPI.Domain.Model;
+using PrimeiraAPI.Infraestrutura.Repositories;
 using System.Text;
 
 
 
-        var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
 
@@ -73,7 +73,7 @@ using System.Text;
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
         {
-            app.UseExceptionHandler("/error-development");
+            app.UseExceptionHandler("/error");
             app.UseSwagger();
             app.UseSwaggerUI();
         }else 
