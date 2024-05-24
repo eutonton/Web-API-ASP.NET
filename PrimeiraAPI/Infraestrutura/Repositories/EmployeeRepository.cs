@@ -20,7 +20,7 @@ namespace PrimeiraAPI.Infraestrutura.Repositories
                 new EmployeeDTO()
                 {
                     Id = b.id,
-                    NameFuncionário = b.name,
+                    NomeFuncionário = b.name,
                     Photo = b.photo
                 }).ToList();
         }

@@ -4,7 +4,7 @@
     {
         public int Id { get;  set; }
 
-        public string NameFuncionário { get;  set; }
+        public string NomeFuncionário { get;  set; }
 
         public string? Photo { get;  set; }
     }
