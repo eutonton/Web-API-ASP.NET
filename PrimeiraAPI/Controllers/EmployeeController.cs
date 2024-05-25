@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PrimeiraAPI.Application.ViewModel;
 using PrimeiraAPI.Domain.DTOs;
-using PrimeiraAPI.Domain.Model;
+using PrimeiraAPI.Domain.Model.EmployeeAggregate;
 
 namespace PrimeiraAPI.Controllers
 {

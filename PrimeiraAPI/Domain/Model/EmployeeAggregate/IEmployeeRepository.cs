@@ -1,6 +1,6 @@
 ﻿using PrimeiraAPI.Domain.DTOs;
 
-namespace PrimeiraAPI.Domain.Model
+namespace PrimeiraAPI.Domain.Model.EmployeeAggregate
 {
     public interface IEmployeeRepository
     {

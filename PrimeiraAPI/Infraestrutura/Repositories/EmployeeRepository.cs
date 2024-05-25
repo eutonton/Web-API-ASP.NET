@@ -1,5 +1,5 @@
 ﻿using PrimeiraAPI.Domain.DTOs;
-using PrimeiraAPI.Domain.Model;
+using PrimeiraAPI.Domain.Model.EmployeeAggregate;
 
 namespace PrimeiraAPI.Infraestrutura.Repositories
 {

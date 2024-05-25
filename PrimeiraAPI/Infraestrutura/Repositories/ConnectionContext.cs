@@ -1,11 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PrimeiraAPI.Domain.Model;
+using PrimeiraAPI.Domain.Model.CompanyAggregate;
+using PrimeiraAPI.Domain.Model.EmployeeAggregate;
 
 namespace PrimeiraAPI.Infraestrutura.Repositories
 {
     public class ConnectionContext : DbContext
     {
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<Company> Company { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 

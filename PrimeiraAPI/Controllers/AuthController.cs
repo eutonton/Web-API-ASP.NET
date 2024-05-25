@@ -10,11 +10,11 @@ namespace PrimeiraAPI.Controllers
         [HttpPost]
         public IActionResult Auth(string username, string password)
         {
-            if (username == "tonton" && password =="123456") 
+           /* if (username == "tonton" && password =="123456") 
             {
                 var token = TokenService.GenerateToken(new Domain.Model.Employee());
                 return Ok(token);
-            }
+            } */
             return BadRequest("username or password invalid");
         }
     }

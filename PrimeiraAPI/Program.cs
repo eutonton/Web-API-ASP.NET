@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using PrimeiraAPI.Application.Mapping;
-using PrimeiraAPI.Domain.Model;
+using PrimeiraAPI.Domain.Model.EmployeeAggregate;
 using PrimeiraAPI.Infraestrutura.Repositories;
 using System.Text;
 
