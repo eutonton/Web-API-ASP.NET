@@ -1,12 +1,13 @@
+using Asp.Versioning.ApiExplorer;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using PrimeiraAPI.Application.Mapping;
 using PrimeiraAPI.Domain.Model.EmployeeAggregate;
 using PrimeiraAPI.Infraestrutura.Repositories;
+using PrimeiraAPI.SwaggerConfig;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Text;
-
-
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,13 +17,15 @@ var builder = WebApplication.CreateBuilder(args);
         builder.Services.AddControllers();
 
 
-builder.Services.AddAutoMapper(typeof(DomainToDTOMapping));
+        builder.Services.AddAutoMapper(typeof(DomainToDTOMapping));
 
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
+        
         builder.Services.AddSwaggerGen(c =>
         {
-           
+            c.OperationFilter<NewSwaggerDefaultValues>();  
+
             c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
             {
                 Name = "Authorization",
@@ -50,8 +53,18 @@ builder.Services.AddAutoMapper(typeof(DomainToDTOMapping));
         }
             });
 
-
+            //c.OperationFilter<SwaggerDefaultValues>(); 
         });
+
+        builder.Services.AddApiVersioning()
+        .AddMvc()
+        .AddApiExplorer(setup =>
+        {
+            setup.GroupNameFormat = "'v'VVV";
+            setup.SubstituteApiVersionInUrl = true;
+        });
+
+        builder.Services.ConfigureOptions<ConfigureSwaggerGenOptions>();
 
         builder.Services.AddTransient<IEmployeeRepository, EmployeeRepository>();
 
@@ -81,7 +94,14 @@ builder.Services.AddAutoMapper(typeof(DomainToDTOMapping));
         {
             app.UseExceptionHandler("/error");
             app.UseSwagger();
-            app.UseSwaggerUI();
+            app.UseSwaggerUI(options =>
+            {
+                var version = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
+                foreach (var description in version.ApiVersionDescriptions)
+                {
+                    options.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json", $"Web Api - {description.GroupName.ToUpper()}");
+                }
+            });
         }else 
         {
             app.UseExceptionHandler("/error");
